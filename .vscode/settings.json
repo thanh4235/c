@@ -48,5 +48,11 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "trang2bai4": "cpp"
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
     }
 }
