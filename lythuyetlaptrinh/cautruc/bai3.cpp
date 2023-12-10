@@ -1,0 +1,1 @@
+/*Viết chương trình quản lý nhân sự cho một công ty, mỗi nhân viên trong công ty gồm các thông tin sau: mã số( không có hai người trùng mã số), họ, tên, ngày sinh, nơi sinh, địa chỉ, ngày công tác, lương. Viết chương trình quản lý nhân viên với các thao tác sau*/
