@@ -41,9 +41,9 @@ void input(struct taxi *a)
     {
         printf("Nhap so cho ngoi cua xe taxi: ");
         scanf("%d", &a->seat);
-        if (a->seat < 0)
-            printf("Gia tri khong hop le\n");
-    } while (a->seat < 0);
+        if (a->seat != 4 && a->seat != 7)
+            printf("Chi co xe 4 cho hoac 7 cho!\n");
+    } while (a->seat != 4 && a->seat != 7);
 }
 void display(struct taxi a)
 {

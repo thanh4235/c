@@ -10,19 +10,13 @@ void terminateNewLine(char *a)
 }
 int main()
 {
-    char a[100], d[100], c[100];
-    int b;
-    printf("Nhap a: ");
-    fgets(a, sizeof a, stdin);
-    terminateNewLine(a);
-
-    printf("Nhap b: ");
-    scanf("%s", d);
-
-    getchar();
-    printf("Nhap c: ");
-    fgets(c, sizeof c, stdin);
-    terminateNewLine(a);
-
-    printf("\n%s\n%d\n%s", a, b, c);
+    int a;
+    do
+    {
+        printf("Nhap a: ");
+        scanf("%d", &a);
+        if (a != 4 && a != 7)
+            printf("Chi co xe 4 cho hoac 7 cho\n");
+    } while (a != 4 && a != 7);
+    return 0;
 }
