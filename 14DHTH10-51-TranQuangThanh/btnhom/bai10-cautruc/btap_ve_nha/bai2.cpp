@@ -8,52 +8,64 @@ struct invoice
     float price;
     int quantity;
 };
-void input(struct invoice *first)
+void terminateNewLine(char *a)
+{
+    char *newline = strchr(a, '\n');
+    if (newline != NULL)
+    {
+        *newline = '\0';
+    }
+}
+void input(struct invoice *a)
 {
     printf("Nhap ma hoa don: ");
-    scanf("%s", first->invoiceCode);
+    fgets(a->invoiceCode, sizeof a->invoiceCode, stdin);
+    terminateNewLine(a->invoiceCode);
     printf("Nhap ten khach hang: ");
-    scanf("%s", first->customerName);
+    fgets(a->customerName, sizeof a->customerName, stdin);
+    terminateNewLine(a->customerName);
     printf("Nhap ten san pham: ");
-    scanf("%s", first->productName);
+    fgets(a->productName, sizeof a->productName, stdin);
+    terminateNewLine(a->productName);
     do
     {
         printf("Nhap gia: ");
-        scanf("%f", &first->price);
-        if (first->price <= 0)
+        scanf("%f", &a->price);
+        if (a->price <= 0)
             printf("Gia tri khong hop le!!\n");
-    } while (first->price <= 0);
+    } while (a->price <= 0);
     do
     {
         printf("Nhap so luong: ");
-        scanf("%d", &first->quantity);
-        if (first->quantity <= 0)
+        scanf("%d", &a->quantity);
+        if (a->quantity <= 0)
             printf("Gia tri khong hop le!!\n");
-    } while (first->quantity <= 0);
+    } while (a->quantity <= 0);
 }
-float discount(struct invoice first)
+float discount(struct invoice a)
 {
-    float sum1 = first.price * first.quantity, sum2 = sum1;
-    if (first.quantity > 50)
+    float sum1 = a.price * a.quantity, sum2 = sum1;
+    if (a.quantity > 50)
         sum1 = sum1 * (1 - 0.1);
-    if (strcmp(first.productName, "mitsumi") == 0)
+    if (strcmp(a.productName, "chuot mitsumi") == 0)
         sum1 = sum1 * (1 - 0.05);
     return sum2 - sum1;
 }
-void display(struct invoice first)
+void display(struct invoice a)
 {
-    printf("\nMa hoa don: %s\n", first.invoiceCode);
-    printf("Ten khach hang: %s\n", first.customerName);
-    printf("Ten san pham: %s\n", first.productName);
-    printf("Gia: %.2f\n", first.price);
-    printf("So luong: %d\n", first.quantity);
-    printf("\nTong tien: %.2f\n", first.price * first.quantity);
-    printf("Giam gia: %2.f\n", discount(first));
+    printf("\nMa hoa don: %s\n", a.invoiceCode);
+    printf("Ten khach hang: %s\n", a.customerName);
+    printf("Ten san pham: %s\n", a.productName);
+    printf("Gia: %.2f\n", a.price);
+    printf("So luong: %d\n", a.quantity);
+    printf("\nTong tien: %.2f\n", a.price * a.quantity);
+    printf("Giam gia: %2.f\n", discount(a));
+    printf("So tien phai tra: %.2f\n", (a.price * a.quantity) - discount(a));
 }
 int main()
 {
-    invoice first;
-    input(&first);
-    display(first);
+    invoice a;
+    input(&a);
+    display(a);
     return 0;
 }

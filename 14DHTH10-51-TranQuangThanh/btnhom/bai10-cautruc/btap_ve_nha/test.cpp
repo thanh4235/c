@@ -1,77 +1,76 @@
 #include <stdio.h>
 #include <string.h>
-
-// Define the structure HoaDon
-struct Invoice
+struct phone
 {
-    char invoiceCode[20];
-    char customerName[50];
-    char productName[50];
+    char code[10];
+    char name[20];
+    char sort[20];
     float price;
     int quantity;
 };
-
-// Function to input invoice information
-void inputInvoice(struct Invoice *invoice)
+void terminateNewLine(char *a)
 {
-    printf("Enter invoice code: ");
-    scanf("%s", invoice->invoiceCode);
-
-    printf("Enter customer name: ");
-    scanf("%s", invoice->customerName);
-
-    printf("Enter product name: ");
-    scanf("%s", invoice->productName);
-
-    printf("Enter price: ");
-    scanf("%f", &invoice->price);
-
-    printf("Enter quantity: ");
-    scanf("%d", &invoice->quantity);
-}
-
-// Function to calculate the total amount of the invoice
-float calculateTotalAmount(struct Invoice invoice)
-{
-    return invoice.price * invoice.quantity;
-}
-
-// Function to calculate the discount
-float calculateDiscount(struct Invoice invoice)
-{
-    if (invoice.quantity > 50 || strcmp(invoice.productName, "mitsumi mouse") == 0)
+    char *newline = strchr(a, '\n');
+    if (newline != NULL)
     {
-        return 0.1; // 10% discount
+        *newline = '\0';
     }
+}
+void input(struct phone *a)
+{
+    printf("Nhap ma dien thoai: ");
+    getchar();
+    fgets(a->code, sizeof a->code, stdin);
+
+    terminateNewLine(a->code);
+    printf("Nhap ten dien thoai: ");
+    getchar();
+    fgets(a->name, sizeof a->name, stdin);
+    terminateNewLine(a->name);
+    printf("Nhap loai dien thoai: ");
+    getchar();
+    fgets(a->sort, sizeof a->sort, stdin);
+    terminateNewLine(a->sort);
+    do
+    {
+        printf("Nhap gia: ");
+        scanf("%f", &a->price);
+        if (a->price <= 0)
+            printf("Gia tri khong hop le!\n");
+    } while (a->price <= 0);
+    do
+    {
+        printf("Nhap so luong: ");
+        scanf("%d", &a->quantity);
+        if (a->quantity <= 0)
+            printf("Gia tri khong hop le\n");
+    } while (a->quantity <= 0);
+}
+void display(struct phone a)
+{
+    printf("\nMa dien thoai: %s\n", a.code);
+    printf("Ten dien thoai: %s\n", a.name);
+    printf("Loai dien thoai: %s\n", a.sort);
+    printf("Gia: %f\n", a.price);
+    printf("So luong: %d\n", a.quantity);
+    if (strcmp(a.name, "Galaxy") == 0)
+        printf("\nDien thoai cua hang Galaxy\n");
     else
-    {
-        return 0.05; // 5% discount
-    }
+        printf("\nDien thoai khong phai cua hang Galaxy\n");
+
+    if (a.price > 10000000)
+        printf("\nThuoc phan khuc cao cap\n");
+    else if (a.price > 5000000)
+        printf("\nThuoc phan khuc trung cap\n");
+    else
+        printf("\nThuoc phan khuc binh dan\n");
+    if (a.quantity < 5)
+        printf("\nCan nhap hang\n");
 }
-
-// Function to display invoice information
-void displayInvoice(struct Invoice invoice)
-{
-    float totalAmount = calculateTotalAmount(invoice);
-    float discount = totalAmount * calculateDiscount(invoice);
-
-    printf("\nInvoice Information:\n");
-    printf("Invoice Code: %s\n", invoice.invoiceCode);
-    printf("Customer Name: %s\n", invoice.customerName);
-    printf("Product Name: %s\n", invoice.productName);
-    printf("Total Amount: %.2f\n", totalAmount);
-    printf("Discount: %.2f\n", discount);
-}
-
 int main()
 {
-    struct Invoice invoice;
-
-    // Input invoice information
-    inputInvoice(&invoice);
-
-    // Display invoice information
-    displayInvoice(invoice);
-
+    struct phone a;
+    input(&a);
+    display(a);
     return 0;
 }

@@ -8,41 +8,46 @@ struct staff
     float one_day_salary;
     char position[100];
 };
-char *inputStringWithSpace(char *__restrict__ _Buf, int _MaxCount)
+void terminateNewLine(char *a)
 {
-    while ((getchar()) != '\n')
-        ;
-    return fgets(_Buf, _MaxCount, stdin);
+    char *newline = strchr(a, '\n');
+    if (newline != NULL)
+    {
+        *newline = '\0';
+    }
 }
-void input(struct staff *first)
+void input(struct staff *a)
 {
     printf("Nhap ma nhan vien: ");
-    scanf("%s", first->code);
+    fgets(a->code, sizeof a->code, stdin);
+    terminateNewLine(a->code);
     printf("Nhap ten nhan vien: ");
-    scanf("%s", first->name);
+    fgets(a->name, sizeof a->name, stdin);
+    terminateNewLine(a->name);
     do
     {
         printf("Nhap so ngay cong: ");
-        scanf("%d", &first->workday);
-        if (first->workday < 0)
+        scanf("%d", &a->workday);
+        if (a->workday < 0)
             printf("Gia tri khong hop le!\n");
-    } while (first->workday < 0);
+    } while (a->workday < 0);
     do
     {
         printf("Nhap luong mot ngay cong: ");
-        scanf("%f", &first->one_day_salary);
-        if (first->one_day_salary < 0)
+        scanf("%f", &a->one_day_salary);
+        if (a->one_day_salary < 0)
             printf("Gia tri khong hop le!\n");
-    } while (first->one_day_salary < 0);
+    } while (a->one_day_salary < 0);
     printf("Nhap chuc vu: ");
-    // scanf("%s", first->position);
-    inputStringWithSpace(first->position, 100);
+    getchar();
+    fgets(a->position, sizeof a->position, stdin);
+    terminateNewLine(a->position);
 }
-void display(struct staff first)
+void display(struct staff a)
 {
-    float sum = first.workday * first.one_day_salary;
+    float sum = a.workday * a.one_day_salary;
     printf("\nTong luong: %.2f\n", sum);
-    if (first.workday > 24)
+    if (a.workday > 24)
     {
         sum += 50;
         printf("Thuong 50$\n");
@@ -50,22 +55,22 @@ void display(struct staff first)
     else
         printf("Khong thuong\n");
     printf("Tien phu cap chuc vu: ");
-    if (strcmp(first.position, "Giam Doc") == 0)
+    if (strcmp(a.position, "Giam Doc") == 0)
     {
         printf("100$\n");
         sum += 100;
     }
-    else if (strcmp(first.position, "PhoGiamDoc") == 0)
+    else if (strcmp(a.position, "Pho Giam Doc") == 0)
     {
         printf("80$\n");
         sum += 80;
     }
-    else if (strcmp(first.position, "TruongPhong") == 0)
+    else if (strcmp(a.position, "Truong Phong") == 0)
     {
         printf("60$\n");
         sum += 60;
     }
-    else if (strcmp(first.position, "PhoPhong") == 0)
+    else if (strcmp(a.position, "Pho Phong") == 0)
     {
         printf("40$\n");
         sum += 40;
@@ -76,9 +81,8 @@ void display(struct staff first)
 }
 int main()
 {
-    struct staff first;
-    input(&first);
-    display(first);
-    // inputStringWithSpace();
+    struct staff a;
+    input(&a);
+    display(a);
     return 0;
 }

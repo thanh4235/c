@@ -8,54 +8,65 @@ struct phone
     float price;
     int quantity;
 };
-void input(struct phone *first)
+void terminateNewLine(char *a)
+{
+    char *newline = strchr(a, '\n');
+    if (newline != NULL)
+    {
+        *newline = '\0';
+    }
+}
+void input(struct phone *a)
 {
     printf("Nhap ma dien thoai: ");
-    scanf("%s", first->code);
+    fgets(a->code, sizeof a->code, stdin);
+    terminateNewLine(a->code);
     printf("Nhap ten dien thoai: ");
-    scanf("%s", first->name);
+    fgets(a->name, sizeof a->name, stdin);
+    terminateNewLine(a->name);
     printf("Nhap loai dien thoai: ");
-    scanf("%s", first->sort);
+    fgets(a->sort, sizeof a->sort, stdin);
+    terminateNewLine(a->sort);
     do
     {
         printf("Nhap gia: ");
-        scanf("%f", &first->price);
-        if (first->price <= 0)
+        scanf("%f", &a->price);
+        if (a->price <= 0)
             printf("Gia tri khong hop le!\n");
-    } while (first->price <= 0);
+    } while (a->price <= 0);
     do
     {
         printf("Nhap so luong: ");
-        scanf("%d", &first->quantity);
-        if (first->quantity <= 0)
+        scanf("%d", &a->quantity);
+        if (a->quantity <= 0)
             printf("Gia tri khong hop le\n");
-    } while (first->quantity <= 0);
+    } while (a->quantity <= 0);
 }
-void display(struct phone first)
+void display(struct phone a)
 {
-    printf("\nMa dien thoai: %s\n", first.code);
-    printf("Ten dien thoai: %s\n", first.name);
-    printf("Loai dien thoai: %s\n", first.sort);
-    printf("Gia: %f\n", first.price);
-    printf("So luong: %d\n", first.quantity);
-    if (strcmp(first.name, "Galaxy") == 0)
+    printf("\nMa dien thoai: %s\n", a.code);
+    printf("Ten dien thoai: %s\n", a.name);
+    printf("Loai dien thoai: %s\n", a.sort);
+    printf("Gia: %f\n", a.price);
+    printf("So luong: %d\n", a.quantity);
+    if (strcmp(a.name, "Galaxy") == 0)
         printf("\nDien thoai cua hang Galaxy\n");
     else
         printf("\nDien thoai khong phai cua hang Galaxy\n");
 
-    if (first.price <= 5000000)
-        printf("\nThuoc phan khuc binh dan\n");
-    if (first.price > 5000000 && first.price < 10000000)
-        printf("\nThuoc phan khuc trung cap\n");
-    if (first.price > 10000000)
+    if (a.price > 10000000)
         printf("\nThuoc phan khuc cao cap\n");
-    if (first.quantity < 5)
-        printf("\nNhap hang\n");
+    else if (a.price > 5000000)
+        printf("\nThuoc phan khuc trung cap\n");
+    else
+        printf("\nThuoc phan khuc binh dan\n");
+    if (a.quantity < 5)
+        printf("\nCan nhap hang\n");
 }
 int main()
 {
-    struct phone first;
-    input(&first);
-    display(first);
+    struct phone a;
+    input(&a);
+    display(a);
     return 0;
 }
