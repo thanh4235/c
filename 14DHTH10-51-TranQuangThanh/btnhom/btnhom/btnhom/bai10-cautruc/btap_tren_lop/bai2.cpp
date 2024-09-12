@@ -16,42 +16,37 @@ void terminateNewLine(char *a)
         *newline = '\0';
     }
 }
-void input(struct staff a)
+void input(struct staff *a)
 {
     printf("Nhap ma nhan vien: ");
-    fgets(a.code, sizeof a.code, stdin);
-    terminateNewLine(a.code);
-
+    fgets(a->code, sizeof a->code, stdin);
+    terminateNewLine(a->code);
     printf("Nhap ten nhan vien: ");
-    fgets(a.name, sizeof a.name, stdin);
-    terminateNewLine(a.name);
-
+    fgets(a->name, sizeof a->name, stdin);
+    terminateNewLine(a->name);
     do
     {
         printf("Nhap so ngay cong: ");
-        scanf("%d", &a.workday);
-        if (a.workday < 0)
+        scanf("%d", &a->workday);
+        if (a->workday < 0)
             printf("Gia tri khong hop le!\n");
-    } while (a.workday < 0);
-
+    } while (a->workday < 0);
     do
     {
         printf("Nhap luong mot ngay cong: ");
-        scanf("%f", &a.one_day_salary);
-        if (a.one_day_salary < 0)
+        scanf("%f", &a->one_day_salary);
+        if (a->one_day_salary < 0)
             printf("Gia tri khong hop le!\n");
-    } while (a.one_day_salary < 0);
-
+    } while (a->one_day_salary < 0);
     printf("Nhap chuc vu: ");
     getchar();
-    fgets(a.position, sizeof a.position, stdin);
-    terminateNewLine(a.position);
+    fgets(a->position, sizeof a->position, stdin);
+    terminateNewLine(a->position);
 }
 void display(struct staff a)
 {
     float sum = a.workday * a.one_day_salary;
     printf("\nTong luong: %.2f\n", sum);
-
     if (a.workday > 24)
     {
         sum += 50;
@@ -59,7 +54,6 @@ void display(struct staff a)
     }
     else
         printf("Khong thuong\n");
-        
     printf("Tien phu cap chuc vu: ");
     if (strcmp(a.position, "Giam Doc") == 0)
     {
@@ -84,12 +78,11 @@ void display(struct staff a)
     else
         printf("0$\n");
     printf("Luong thuc lanh: %.2f", sum);
-
 }
 int main()
 {
     struct staff a;
-    input(a);
+    input(&a);
     display(a);
     return 0;
 }

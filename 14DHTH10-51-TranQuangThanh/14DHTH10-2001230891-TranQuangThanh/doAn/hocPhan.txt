@@ -1,0 +1,6 @@
+MHP001,Toan cao cap,4,Bat buoc,Nguyen Van A,CNTT
+MHP002,Cau truc du lieu,3,Bat buoc,Le Thi B,CNTT
+MHP003,Lap trinh C,3,Bat buoc,Tran Van C,CNTT
+MHP004,Mang may tinh,3,Tu chon,Pham Thi D,CNTT
+MHP005,Co so du lieu,4,Bat buoc,Do Van E,CNTT
+MHP006,Lap trinh Web,3,Tu chon,Nguyen Thi F,CNTT

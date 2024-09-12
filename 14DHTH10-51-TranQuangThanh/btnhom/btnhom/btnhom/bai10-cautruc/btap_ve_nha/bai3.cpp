@@ -19,16 +19,12 @@ void terminateNewLine(char *a)
 void input(struct phone *a)
 {
     printf("Nhap ma dien thoai: ");
-    getchar();
     fgets(a->code, sizeof a->code, stdin);
-
     terminateNewLine(a->code);
     printf("Nhap ten dien thoai: ");
-    getchar();
     fgets(a->name, sizeof a->name, stdin);
     terminateNewLine(a->name);
     printf("Nhap loai dien thoai: ");
-    getchar();
     fgets(a->sort, sizeof a->sort, stdin);
     terminateNewLine(a->sort);
     do

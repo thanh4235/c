@@ -1,22 +1,18 @@
 {
     "files.associations": {
-        "iostream": "cpp",
-        "*.tcc": "cpp",
-        "numbers": "cpp",
-        "cmath": "cpp",
-        "ostream": "cpp",
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
+        "*.tcc": "cpp",
         "cctype": "cpp",
         "clocale": "cpp",
+        "cmath": "cpp",
         "compare": "cpp",
         "concepts": "cpp",
         "cstddef": "cpp",
         "cstdint": "cpp",
         "cstdio": "cpp",
         "cstdlib": "cpp",
-        "ctime": "cpp",
         "cwchar": "cpp",
         "cwctype": "cpp",
         "deque": "cpp",
@@ -38,22 +34,16 @@
         "type_traits": "cpp",
         "utility": "cpp",
         "initializer_list": "cpp",
-        "iomanip": "cpp",
         "iosfwd": "cpp",
+        "iostream": "cpp",
         "istream": "cpp",
         "limits": "cpp",
         "new": "cpp",
+        "numbers": "cpp",
+        "ostream": "cpp",
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp",
-        "trang2bai4": "cpp",
-        "fstream": "cpp"
-    },
-    "editor.tabSize": 4,
-    "editor.insertSpaces": true,
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
+        "typeinfo": "cpp"
     }
 }
