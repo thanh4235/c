@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     SETTINGS {
         int         setting_id      PK
